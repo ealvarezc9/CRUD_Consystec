@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <form class="d-flex align-items-center">
+        <a class="btn btn-primary me-3" [routerLink]="['/tareas/agregar']">Agregar Tarea</a>
+        <label for="filtroEstado" class="me-2">Filtrar por Estado:</label>
+        <select id="filtroEstado" class="form-control" [(ngModel)]="filtroEstado" name="filtroEstado" style="width: auto;">
+          <option value="completadas">Completadas</option>
+          <option value="no completadas">No Completadas</option>
+        </select>
+      </form>
+      
+      <br>
+      <table class="table table-striped">
+        <thead>
+          <tr class="row">
+            <th class="col-sm-1"> ID </th>
+            <th class="col-sm-2"> TITULO </th>
+            <th class="col-sm-2"> DESCRIPCION </th>
+            <th class="col-sm-1"> ESTADO </th>
+            <th class="col-sm-2"> FECHA CREACION </th>
+            <th class="col-sm-2"> FECHA VENCIMIENTO </th>
+            <th class="col-sm-1"> ACCIONES</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let tarea of (tareas | async | filtroTareas:filtroEstado)" class="row">
+            <td class="col-sm-1"><i>{{ tarea.id }}</i></td>
+            <td class="col-sm-2"><i>{{ tarea.titulo }}</i></td>
+            <td class="col-sm-2"><i>{{ tarea.descripcion }}</i></td>
+            <td class="col-sm-1"><i>{{ tarea.estado }}</i></td>
+            <td class="col-sm-2"><i>{{ tarea.fecha_creacion | date:'yyyy-MM-dd' }}</i></td>
+            <td class="col-sm-2"><i>{{ tarea.fecha_vencimiento | date:'yyyy-MM-dd' }}</i></td>
+            <td class="col-sm-1">
+              <fieldset class="form-group col-sm-1">
+                <a class="btn btn-info" [routerLink]="['/tareas/editar/', tarea.id]">Editar</a>
+              </fieldset>
+            </td>
+            <td class="col-sm-1">
+              <fieldset class="form-group col-sm-1">
+                <a class="btn btn-danger" (click)="borrarTarea(tarea.id)">Borrar</a>
+              </fieldset>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+<div class="row" *ngIf="tarea">
+    <div class="col-sm-12">
+      <form (ngSubmit)="onSubmit()" #tareaForm="ngForm">
+        <h4 class="text-center">TAREAS</h4>
+        <div class="col-md-4 mx-auto">
+        <fieldset class="form-group">
+          <div class="col-sm-12">
+            <label class="control-label" for="titulo">Titulo</label>
+            <input type="text" class="form-control" required [(ngModel)]="tarea.titulo" name="titulo">
+          </div>
+        </fieldset>
+        <fieldset class="form-group">
+          <div class="col-sm-12">
+            <label class="control-label" for="descripcion">Descripcion</label>
+            <input type="text" class="form-control" required [(ngModel)]="tarea.descripcion" name="descripcion">
+          </div>
+        </fieldset>
+        <fieldset class="form-group col-sm-12">
+          <label for="estado">Estado de la tarea:</label>
+          <select id="estado" class="form-control" [(ngModel)]="tarea.estado" name="estado">
+            <option [ngValue]="'completadas'">Completadas</option>
+            <option [ngValue]="'no completadas'">No Completadas</option>
+          </select>
+        </fieldset>
+             
+        <fieldset class="form-group">
+          <div class="col-sm-12">
+            <label class="control-label" for="fecha_creacion">Creacion</label>
+            <input type="date" class="form-control" required [(ngModel)]="tarea.fecha_creacion" name="fecha_creacion">
+          </div>
+        </fieldset>
+        <fieldset class="form-group">
+          <div class="col-sm-12">
+            <label class="control-label" for="fecha_vencimiento">Vencimiento</label>
+            <input type="date" class="form-control" required [(ngModel)]="tarea.fecha_vencimiento" name="fecha_vencimiento">
+          </div>
+        </fieldset>
+        <fieldset class="form-group mt-4">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-primary" [disabled]="!tareaForm.form.valid">Guardar</button>
+            <a class="btn btn-secondary ms-4" [routerLink]="['/dashboard']">Regresar</a>
+          </div>
+        </fieldset>
+        </div>
+      </form>
+    </div>
+  </div>

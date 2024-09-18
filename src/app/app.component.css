@@ -1,0 +1,19 @@
+.logo {
+    height: 50px;
+    width: auto;
+  }
+  
+  header {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+  }
+  
+  header h1 {
+    margin: 0;
+    font-size: 24px;
+    margin-left: 10px;
+  }
+  
